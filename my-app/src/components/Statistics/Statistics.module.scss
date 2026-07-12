@@ -1,0 +1,71 @@
+$gold: #c9a84c;
+$gold-light: #e0c97a;
+$dark: #111111;
+$white: #ffffff;
+
+.statistics {
+  background: $dark;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  position: relative;
+
+  & + & {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: rgba(201, 168, 76, 0.2);
+    }
+  }
+}
+
+.value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: $gold;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .card + .card::before {
+    display: none;
+  }
+
+  .inner {
+    gap: 1rem;
+  }
+}

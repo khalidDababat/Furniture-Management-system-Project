@@ -1,0 +1,187 @@
+$gold: #c9a84c;
+$gold-light: #e0c97a;
+$gold-dark: #a8872e;
+$dark: #111111;
+$dark-2: #1a1a1a;
+$white: #ffffff;
+$transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+.section {
+  width: 100%;
+  background: #ffffff;
+}
+
+// ─────────────────────────────────────────────
+//  Banner (Dark CTA)
+// ─────────────────────────────────────────────
+.banner {
+  background: linear-gradient(135deg, $dark 0%, $dark-2 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.bannerContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.bannerQuote {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: $white;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.bannerSig {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: $gold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+// ─────────────────────────────────────────────
+//  Form Wrapper
+// ─────────────────────────────────────────────
+.formWrapper {
+  padding: 96px 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+// ─────────────────────────────────────────────
+//  Success message
+// ─────────────────────────────────────────────
+.success {
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid $gold;
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeIn 0.5s ease both;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    color: $gold;
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $dark;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─────────────────────────────────────────────
+//  Form Inputs
+// ─────────────────────────────────────────────
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+
+  label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #444;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    background: #fbfbfb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: $dark;
+    transition: border-color $transition, box-shadow $transition;
+
+    &::placeholder {
+      color: #aaa;
+    }
+
+    &:focus {
+      border-color: $gold;
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1);
+      background: #ffffff;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Submit Button
+// ─────────────────────────────────────────────
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: $dark;
+  color: $white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: $transition;
+  margin-top: 1rem;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    background: $gold;
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(201, 168, 76, 0.35);
+
+    svg {
+      transform: translate(2px, -2px);
+    }
+  }
+}

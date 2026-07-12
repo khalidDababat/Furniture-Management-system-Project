@@ -1,3 +1,81 @@
 {
-    
+  "categories": [
+    { "id": 1, "name": "أثاث خارجي", "image": "http://localhost:3001/outdoor-furniture.png" },
+    { "id": 2, "name": "اثاث مراكز تعليمية", "image": "http://localhost:3001/Educational-center-furniture.png"},
+    { "id": 3, "name": "اثاث مراكز طبية", "image": "http://localhost:3001/medical-center-furniture.png" },
+    { "id": 4, "name": "اثاث مسارح", "image": "http://localhost:3001/Theater-furniture.png" },
+    { "id": 5, "name": "اثاث منزل", "image": "http://localhost:3001/Home-furniture.png" },
+    { "id": 6, "name": "اكسسوارت مكتبية", "image": "http://localhost:3001/Office-Accessories.png" },
+    { "id": 7, "name": "تصميم داخلي", "image": "http://localhost:3001/Interior-design.png" },
+    { "id": 8, "name": "توريدات مكتبية", "image": "http://localhost:3001/Office-supplies.png" },
+    { "id": 9, "name": "خزائن", "image": "http://localhost:3001/cabinets.png" },
+    { "id": 10, "name": "طاولات", "image": "http://localhost:3001/Tables.png" },
+    { "id": 11, "name": "قواطع ", "image": "http://localhost:3001/partitions.png" },
+    { "id": 12, "name": "كاونترات استقبال", "image": "http://localhost:3001/Reception-counters.png" },
+    { "id": 13, "name": "كراسي جلوس", "image": "http://localhost:3001/Chairs.png" },
+    { "id": 14, "name": "كنب وصوفا", "image": "http://localhost:3001/Sofas.png" },
+    { "id": 15, "name": "مكاتب", "image": "http://localhost:3001/Offices.png" },
+    { "id": 16, "name": "نيكورات", "image": "http://localhost:3001/Necora.png" }
+
+  ],
+  "heroSlides": [
+    {
+      "id": 1,
+      "image": "http://localhost:3001/hero1.png",
+      "headline": "أثاث مكتبي ومعدني فاخر يجسد التميز", 
+      "cta": "استكشف اعمالنا"
+     
+    },
+    {
+      "id": 2,
+      "image": "http://localhost:3001/hero2.png",
+      "headline": "Where Quality Meets Style",
+       "cta": "استكشف اعمالنا"
+      
+    },
+    {
+      "id": 3,
+      "image": "http://localhost:3001/hero3.png",
+      "headline": "Furniture Tailored to Your Vision",
+       "cta": "استكشف اعمالنا "
+     
+    }
+  ],
+  "statistics": [
+    { "id": 1, "value": "100%", "label": "Quality Guarantee" },
+    { "id": 2, "value": "+5000", "label": "Projects Delivered" },
+    { "id": 3, "value": "+25", "label": "Years of Experience" }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ahmed Al-Masri",
+      "role": "Villa Owner",
+      "review": "أثاث زياد الشخشير غيّر منزلنا تماماً. الجودة والاهتمام بالتفاصيل لا مثيل لهما. ننصح به بشدة!",
+      "rating": 4,
+      "image": "http://localhost:3001/"
+    },
+    {
+      "id": 2,
+      "name": "Rania Hassan",
+      "role": "Interior Designer",
+      "review": "لقد تعاونت معهم في مشاريع متعددة، وفي كل مرة كانت جودة الصنع والتسليم استثنائية. عملاؤي دائماً في غاية السعادة.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Khaled Nabulsi",
+      "role": "Hotel Manager",
+      "review": "قمنا بتأثيث فندقنا البوتيكي بالكامل بفريق زياد. تجاوزت التصاميم المخصصة كل التوقعات، بجودة عالمية المستوى حقاً.",
+      "rating": 3,
+      "image": ""
+    }
+  ],
+  "manufacturingSteps": [
+    { "id": 1, "title": "التصميم ثلاثي الأبعاد باستخدام AutoCAD", "desc": "تبدأ كل قطعة كنموذج ثلاثي الأبعاد دقيق، مما يضمن النسب المثالية والتناغم البصري قبل بدء الإنتاج." },
+    { "id": 2, "title": "القطع الدقيق باستخدام الحاسوب", "desc": "تقوم آلات CNC الحديثة بتنفيذ عمليات القطع بدقة تصل إلى المليمتر، مما ينتج عنه مكونات متناسقة وخالية من العيوب في كل مرة." },
+    { "id": 3, "title": "الطلاء والتشطيب بالبودرة", "desc": "يحمي الطلاء المسحوق متعدد الطبقات الأسطح من الصدأ والتآكل، مما يوفر لمسة نهائية ناعمة ومتينة وجميلة." },
+    { "id": 4, "title": "الفحص النهائي للجودة", "desc": "تخضع كل قطعة لفحوصات جودة صارمة قبل مغادرتها ورشتنا، مما يضمن الكمال في كل مرحلة." }
+  ]
 }

@@ -1,0 +1,121 @@
+$gold: #c9a84c;
+$gold-light: #e0c97a;
+$dark: #111111;
+$white: #ffffff;
+$transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+.section {
+  padding: 96px 2rem;
+  background: #fff;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+// ─────────────────────────────────────────────
+//  Grid
+// ─────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Card
+// ─────────────────────────────────────────────
+.card {
+  display: block;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    .img {
+      transform: scale(1.07);
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .label {
+      padding-bottom: 1.5rem;
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform $transition;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background $transition;
+}
+
+.label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+  transition: padding $transition;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: $gold;
+    border-radius: 1px;
+    margin-bottom: 0.4rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $white;
+    letter-spacing: 0.04em;
+  }
+}

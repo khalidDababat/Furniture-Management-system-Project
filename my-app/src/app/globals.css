@@ -1,12 +1,24 @@
-/* ─────────────────────────────────────────────
-   Design Tokens
-───────────────────────────────────────────── */
+@import "tailwindcss";
+
+
 :root {
   --background: #ffffff;
   --foreground: #0d0d0d;
   --gold: #c9a84c;
   --gold-light: #e0c97a;
-  --font-cairo: 'Cairo', sans-serif;
+  --gold-dark: #a8872e;
+  --dark: #111111;
+  --dark-2: #1a1a1a;
+  --dark-3: #222222;
+  --text-muted: #888888;
+  --text-light: #cccccc;
+  --border: rgba(201, 168, 76, 0.2);
+  --font-inter: 'Inter', sans-serif;
+  --navbar-height: 80px;
+  --section-pad: 96px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ─────────────────────────────────────────────
@@ -24,6 +36,7 @@ html {
   height: 100%;
   scroll-behavior: smooth;
   font-size: 16px;
+  direction: rtl;
 }
 
 html,
@@ -38,10 +51,9 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-cairo), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  direction: rtl;
 }
 
 a {
@@ -57,11 +69,56 @@ svg {
 
 button {
   font-family: inherit;
+  cursor: pointer;
 }
 
 /* ─────────────────────────────────────────────
-   Utility: push content below fixed navbar
+   Utility classes
 ───────────────────────────────────────────── */
 .page-content {
-  padding-top: 80px;
+  padding-top: var(--navbar-height);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.gold-bar {
+  display: inline-block;
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.025em;
+}
+
+.btn-gold:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35);
 }

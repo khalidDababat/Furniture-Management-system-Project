@@ -1,0 +1,209 @@
+$gold: #c9a84c;
+$gold-light: #e0c97a;
+$dark: #111111;
+$white: #ffffff;
+$overlay: rgba(0, 0, 0, 0.55);
+
+// ─────────────────────────────────────────────
+//  Hero Section
+// ─────────────────────────────────────────────
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: $dark;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+// ─────────────────────────────────────────────
+//  Slides
+// ─────────────────────────────────────────────
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.slideImg {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 6s ease;
+
+  .active & {
+    transform: scale(1);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.4) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+// ─────────────────────────────────────────────
+//  Content
+// ─────────────────────────────────────────────
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 0 6vw;
+  max-width: 700px;
+  animation: fadeSlideUp 0.8s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headline {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: $white;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-bottom: 2.25rem;
+  max-width: 520px;
+}
+
+// ─────────────────────────────────────────────
+//  CTA Buttons
+// ─────────────────────────────────────────────
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  background: $gold;
+  color: #111;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  letter-spacing: 0.03em;
+  transition:
+    background 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    background: $gold-light;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(201, 168, 76, 0.4);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.secondary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.04em;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  transition:
+    color 0.3s,
+    border-color 0.3s,
+    background 0.3s;
+
+  &:hover {
+    color: $gold;
+    border-color: $gold;
+    background: rgba(201, 168, 76, 0.08);
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Dot Navigation
+// ─────────────────────────────────────────────
+.dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background 0.3s,
+    width 0.3s;
+
+  &.dotActive {
+    background: $gold;
+    width: 28px;
+    border-radius: 4px;
+  }
+}
+
+.skeleton {
+  width: 300px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0 1.5rem;
+  }
+
+  .scrollHint {
+    display: none;
+  }
+}

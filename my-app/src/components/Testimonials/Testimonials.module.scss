@@ -1,0 +1,133 @@
+$gold: #c9a84c;
+$gold-light: #e0c97a;
+$dark: #111111;
+$white: #ffffff;
+$bg-light: #fbfbfb;
+$transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+.section {
+  padding: 96px 2rem;
+  background: $bg-light;
+  max-width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+// ─────────────────────────────────────────────
+//  Grid
+// ─────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Card
+// ─────────────────────────────────────────────
+.card {
+  background: $white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform $transition, box-shadow $transition, border-color $transition;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(201, 168, 76, 0.08);
+    border-color: rgba(201, 168, 76, 0.3);
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Stars
+// ─────────────────────────────────────────────
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: $gold;
+  margin-bottom: 1.5rem;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Quote
+// ─────────────────────────────────────────────
+.quote {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #333;
+  font-style: italic;
+  margin: 0 0 2rem 0;
+  position: relative;
+
+  &::before {
+    content: '“';
+    position: absolute;
+    top: -1rem;
+    left: -1.5rem;
+    font-size: 3rem;
+    color: rgba(201, 168, 76, 0.15);
+    font-family: serif;
+    line-height: 1;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Author
+// ─────────────────────────────────────────────
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+  border: 2px solid rgba(201, 168, 76, 0.2);
+}
+
+.avatarImg {
+  object-fit: cover;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $dark;
+  margin: 0;
+}
+
+.role {
+  font-size: 0.8rem;
+  color: #777;
+  margin: 0;
+}
