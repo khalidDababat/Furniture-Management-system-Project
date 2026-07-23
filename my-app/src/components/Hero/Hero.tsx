@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./hero.module.scss";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 
 import { getHeroSlides } from "@/services/api";
 import { HeroSlide } from "@/types";
@@ -57,16 +58,7 @@ function Hero({ initialSlides = [] }: HeroProps) {
             <div className={styles.actions}>
               <a href="/products" className={styles.cta}>
                 {slide.cta}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <ArrowForwardRoundedIcon fontSize="small" />
               </a>
             </div>
           </>
@@ -75,7 +67,7 @@ function Hero({ initialSlides = [] }: HeroProps) {
         )}
       </div>
 
-      {/* pagenation*/}
+      {/* pagination */}
       {slides.length > 1 && (
         <div className={styles.dots} aria-label="Slide navigation">
           {slides.map((s, i) => (

@@ -41,11 +41,6 @@
      
     }
   ],
-  "statistics": [
-    { "id": 1, "value": "100%", "label": "Quality Guarantee" },
-    { "id": 2, "value": "+5000", "label": "Projects Delivered" },
-    { "id": 3, "value": "+25", "label": "Years of Experience" }
-  ],
   "testimonials": [
     {
       "id": 1,

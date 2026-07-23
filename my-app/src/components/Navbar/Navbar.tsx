@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useLang } from "@/hooks/useLang";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
+
+// MUI Icons
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
 
 // ─────────────────────────────────────────────
 //  Types
@@ -12,10 +21,9 @@ interface NavLink {
   href: string;
 }
 
-const NAV_LINKS: NavLink[] = [
+const NAV_LINKS_AR: NavLink[] = [
   { label: "اخر المنتجات", href: "/latest" },
   { label: "الصفحة الرئيسية", href: "/" },
-
   { label: "المنتجات", href: "/products" },
   { label: "العملاء", href: "/customers" },
   { label: "من نحن", href: "/about" },
@@ -23,87 +31,23 @@ const NAV_LINKS: NavLink[] = [
   { label: "الوظائف", href: "/careers" },
 ];
 
-// ─────────────────────────────────────────────
-//  SVG Icon Components
-// ─────────────────────────────────────────────
-const SearchIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="11" cy="11" r="8" />
-    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-  </svg>
-);
+const NAV_LINKS_EN: NavLink[] = [
+  { label: "Latest Products", href: "/latest" },
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Clients", href: "/customers" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Careers", href: "/careers" },
+];
 
-const UserIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
-  </svg>
-);
-
-const HeartIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-  </svg>
-);
-
-const CartIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-    <line x1="3" y1="6" x2="21" y2="6" />
-    <path d="M16 10a4 4 0 0 1-8 0" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
-// ─────────────────────────────────────────────
-//  Navbar Component
-// ─────────────────────────────────────────────
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
+  const { lang, toggleLang } = useLang();
+  const NAV_LINKS = lang === "ar" ? NAV_LINKS_AR : NAV_LINKS_EN;
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -142,7 +86,7 @@ export default function Navbar() {
     >
       {/* ── Main bar ── */}
       <div className={styles.inner}>
-        {/* ── Brand / Logo (left in LTR) ── */}
+        {/* ── Brand / Logo ── */}
         <Link href="/" className={styles.brand} aria-label="Home">
           <div className={styles.brandDecor} aria-hidden="true" />
           <div className={styles.brandName}>
@@ -151,7 +95,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* ── Desktop Nav Links (center) ── */}
+        {/* ── Desktop Nav Links ── */}
         <nav aria-label="Main navigation">
           <ul className={styles.navLinks} role="list">
             {NAV_LINKS.map((link) => (
@@ -169,12 +113,30 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* ── Actions / Icons (right in LTR) ── */}
+        {/* ── Actions / Icons ── */}
         <div
           className={styles.actions}
           role="group"
           aria-label="Navigation tools"
         >
+          {/* Language Toggle */}
+          <button
+            id="nav-lang-btn"
+            className={`${styles.iconBtn} ${styles.langBtn}`}
+            onClick={toggleLang}
+            aria-label={
+              lang === "ar" ? "Switch to English" : "التبديل إلى العربية"
+            }
+            title={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}
+          >
+            <TranslateRoundedIcon fontSize="small" />
+            <span className={styles.langLabel}>
+              {lang === "ar" ? "EN" : "AR"}
+            </span>
+          </button>
+
+          <div className={styles.divider} aria-hidden="true" />
+
           {/* Search */}
           <button
             id="nav-search-btn"
@@ -183,7 +145,7 @@ export default function Navbar() {
             aria-label="Search"
             aria-expanded={searchOpen}
           >
-            <SearchIcon />
+            <SearchRoundedIcon fontSize="small" />
           </button>
 
           <div className={styles.divider} aria-hidden="true" />
@@ -195,7 +157,7 @@ export default function Navbar() {
             className={styles.iconBtn}
             aria-label="My Account"
           >
-            <UserIcon />
+            <PersonRoundedIcon fontSize="small" />
           </Link>
 
           {/* Wishlist */}
@@ -204,7 +166,7 @@ export default function Navbar() {
             className={styles.iconBtn}
             aria-label="Wishlist"
           >
-            <HeartIcon />
+            <FavoriteBorderRoundedIcon fontSize="small" />
             <span className={styles.badge} aria-label="3 items in wishlist">
               3
             </span>
@@ -216,7 +178,7 @@ export default function Navbar() {
             className={styles.iconBtn}
             aria-label="Shopping Cart"
           >
-            <CartIcon />
+            <ShoppingBagOutlinedIcon fontSize="small" />
             <span className={styles.badge} aria-label="2 items in cart">
               2
             </span>
@@ -246,12 +208,16 @@ export default function Navbar() {
         id="nav-search-bar"
       >
         <div className={styles.searchInner}>
-          <SearchIcon />
+          <SearchRoundedIcon fontSize="small" />
           <input
             id="nav-search-input"
             type="search"
             className={styles.searchInput}
-            placeholder="Search for a product, category or brand..."
+            placeholder={
+              lang === "ar"
+                ? "ابحث عن منتج أو فئة أو علامة تجارية..."
+                : "Search for a product, category or brand..."
+            }
             autoComplete="off"
             autoFocus={searchOpen}
           />
@@ -260,7 +226,7 @@ export default function Navbar() {
             onClick={() => setSearchOpen(false)}
             aria-label="Close search"
           >
-            <CloseIcon />
+            <CloseRoundedIcon fontSize="small" />
           </button>
         </div>
       </div>

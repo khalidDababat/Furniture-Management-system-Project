@@ -220,6 +220,41 @@ $nav-height-scrolled: 64px;
   }
 }
 
+// Language Toggle Button
+.langBtn {
+  width: auto;
+  padding: 0 0.6rem;
+  border-radius: 20px;
+  gap: 0.3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition:
+    color $transition-speed ease,
+    background $transition-speed ease,
+    border-color $transition-speed ease;
+
+  &:hover {
+    border-color: $gold;
+    background: rgba(201, 168, 76, 0.12);
+    color: $gold;
+  }
+
+  svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+.langLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
 // Badge (cart / wishlist count)
 .badge {
   position: absolute;

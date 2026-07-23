@@ -14,9 +14,6 @@ $transition: 0.3s ease;
   font-family: "Inter", sans-serif;
 }
 
-// ─────────────────────────────────────────────
-//  Inner Grid
-// ─────────────────────────────────────────────
 .inner {
   display: grid;
   grid-template-columns: 2.5fr 1fr 1.2fr;
@@ -37,9 +34,6 @@ $transition: 0.3s ease;
   }
 }
 
-// ─────────────────────────────────────────────
-//  Brand Column
-// ─────────────────────────────────────────────
 .brand {
   display: flex;
   flex-direction: column;

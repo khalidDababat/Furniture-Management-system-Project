@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
-import Statistics from "../components/Statistics/Statistics";
 import ManufacturingProcess from "../components/ManufacturingProcess/ManufacturingProcess";
 import ContactSection from "../components/ContactSection/ContactSection";
 import Categories from "../components/Categories/Categories";
@@ -12,11 +11,11 @@ function Home() {
     <div>
       <Navbar />
       <Hero />
-      <Statistics />
+
       <Categories />
       <ManufacturingProcess />
       <Testimonials />
-      <Testimonials />
+
       <Footer />
     </div>
   );

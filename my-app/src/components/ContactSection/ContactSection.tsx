@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import styles from "./ContactSection.module.scss";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+
 function ContactSection() {
   const [form, setForm] = useState({
     name: "",
@@ -51,15 +54,10 @@ function ContactSection() {
 
         {submitted ? (
           <div className={styles.success} role="alert">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
+            <CheckCircleRoundedIcon
+              fontSize="large"
+              style={{ color: "#c9a84c" }}
+            />
             <p>
               Thank you! Your message has been sent. We&apos;ll contact you
               soon.
@@ -118,17 +116,7 @@ function ContactSection() {
             </div>
             <button type="submit" id="contact-submit" className={styles.submit}>
               Send Message
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
+              <SendRoundedIcon fontSize="small" />
             </button>
           </form>
         )}
