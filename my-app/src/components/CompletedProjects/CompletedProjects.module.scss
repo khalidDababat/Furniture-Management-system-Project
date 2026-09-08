@@ -1,0 +1,120 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.section {
+  @include section;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include bp($bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include bp($bp-1col) {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3.1;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  padding: 0;
+  text-align: start;
+  background: var(--surface);
+  width: 100%;
+  img {
+    @include cover;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(51, 61, 41, 0.94),
+      rgba(51, 61, 41, 0.15) 55%,
+      transparent
+    );
+    transition: 0.4s;
+  }
+  &:hover img {
+    transform: scale(1.08);
+    transition: transform 0.7s var(--ease);
+  }
+  &:hover .body p {
+    opacity: 1;
+    max-height: 70px;
+  }
+}
+.body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 22px;
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+  p {
+    color: #B6AD90;
+    font-size: 0.9rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.42s var(--ease);
+  }
+}
+.tag {
+  display: inline-block;
+  background: var(--accent);
+  color: #F5F3EE;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+  font-family: var(--font-head), sans-serif;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  background: rgba(51, 61, 41, 0.85);
+}
+.lbClose {
+  @include icon-btn;
+  position: absolute;
+  top: 22px;
+  inset-inline-end: 22px;
+}
+.lbInner {
+  width: 100%;
+  max-width: 900px;
+}
+.lbImg {
+  width: 100%;
+  border-radius: 12px;
+  max-height: 72vh;
+  object-fit: contain;
+}
+.lbCap {
+  text-align: center;
+  margin-top: 16px;
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+  p {
+    color: var(--muted);
+  }
+}

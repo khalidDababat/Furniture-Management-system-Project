@@ -1,0 +1,42 @@
+@use "../../styles/mixins" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(51, 61, 41, 0.6);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: start center;
+  padding: 24px;
+  overflow-y: auto;
+}
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+}
+.wide {
+  max-width: 760px;
+}
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+.close {
+  @include icon-btn;
+  width: 38px;
+  height: 38px;
+}
+.body {
+  padding: 24px;
+}

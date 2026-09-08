@@ -1,0 +1,40 @@
+@use "../../styles/mixins" as *;
+
+.section {
+  @include section;
+}
+.head {
+  @include section-head;
+  h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: 0.28s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  min-width: 120px;
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: rgba(147, 102, 57, 0.5);
+    transform: translateY(-3px);
+  }
+}

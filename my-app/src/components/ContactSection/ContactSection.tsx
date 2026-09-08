@@ -1,128 +1,125 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
+import SectionHead from "@/components/SectionHead";
+import Reveal from "@/components/Reveal";
+import Container from "@/components/Container";
+import Button from "@/components/Button";
+import type { Company } from "@/types";
+import SendRounded from "@mui/icons-material/SendRounded";
+import CallRounded from "@mui/icons-material/CallRounded";
+import MailRounded from "@mui/icons-material/MailRounded";
+import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
+import ChatRounded from "@mui/icons-material/ChatRounded";
+import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import styles from "./ContactSection.module.scss";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
-function ContactSection() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+export default function ContactSection({ company }: { company: Company }) {
+  const { t, tr } = useLanguage();
+  const [sent, setSent] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    e.currentTarget.reset();
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
-    <section className={styles.section} aria-labelledby="contact-title">
-      {/* Dark CTA banner */}
-      <div className={styles.banner}>
-        <div className={styles.bannerContent}>
-          <blockquote className={styles.bannerQuote}>
-            &ldquo;Allow our expert team to help you furnish your space with
-            exclusive designs crafted for a life of elegance and
-            distinction.&rdquo;
-          </blockquote>
-          <p className={styles.bannerSig}>— Ziad Al-Shakhshir, Founder</p>
-        </div>
-      </div>
-
-      {/* Contact Form */}
-      <div className={styles.formWrapper}>
-        <div className={styles.formHeader}>
-          <span className="gold-bar" />
-          <h2 id="contact-title" className="section-title">
-            Get in Touch
-          </h2>
-          <p className="section-subtitle">
-            We&apos;d love to hear from you — fill in the form and we&apos;ll
-            get back to you shortly.
-          </p>
-        </div>
-
-        {submitted ? (
-          <div className={styles.success} role="alert">
-            <CheckCircleRoundedIcon
-              fontSize="large"
-              style={{ color: "#c9a84c" }}
-            />
-            <p>
-              Thank you! Your message has been sent. We&apos;ll contact you
-              soon.
-            </p>
-          </div>
-        ) : (
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <div className={styles.row}>
+    <section className={styles.section} id="contact">
+      <Container>
+        <SectionHead
+          title={t.sections.contactTitle}
+          sub={t.sections.contactSub}
+        />
+        <div className={styles.split}>
+          <Reveal className={styles.card}>
+            <form onSubmit={onSubmit}>
               <div className={styles.field}>
-                <label htmlFor="contact-name">Full Name</label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  placeholder="John Smith"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                />
+                <label>{t.contact.name}</label>
+                <input required name="name" placeholder={t.contact.name} />
               </div>
               <div className={styles.field}>
-                <label htmlFor="contact-email">Email Address</label>
+                <label>{t.contact.email}</label>
                 <input
-                  id="contact-email"
-                  name="email"
+                  required
                   type="email"
-                  placeholder="john@example.com"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
+                  name="email"
+                  placeholder="name@example.com"
                 />
               </div>
+              <div className={styles.field}>
+                <label>{t.contact.phone}</label>
+                <input name="phone" placeholder="+970 ..." />
+              </div>
+              <div className={styles.field}>
+                <label>{t.contact.message}</label>
+                <textarea required name="message" placeholder="..." />
+              </div>
+              <Button type="submit" block>
+                <SendRounded sx={{ fontSize: 19 }} />
+                {t.contact.send}
+              </Button>
+              {sent && (
+                <p className={styles.success}>
+                  <CheckCircleRounded sx={{ fontSize: 20 }} />
+                  {t.contact.success}
+                </p>
+              )}
+            </form>
+          </Reveal>
+
+          <Reveal>
+            <div className={styles.infoList}>
+              <div className={styles.infoItem}>
+                <div className={styles.iico}>
+                  <CallRounded />
+                </div>
+                <div>
+                  <h4>{t.contact.phones}</h4>
+                  {company.phones.map((p) => (
+                    <a key={p} href={`tel:${p.replace(/\s/g, "")}`} dir="ltr">
+                      {p}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.iico}>
+                  <MailRounded />
+                </div>
+                <div>
+                  <h4>{t.contact.emailLabel}</h4>
+                  <a href={`mailto:${company.email}`}>{company.email}</a>
+                </div>
+              </div>
+              <div className={styles.infoItem}>
+                <div className={styles.iico}>
+                  <LocationOnRounded />
+                </div>
+                <div>
+                  <h4>{t.contact.branches}</h4>
+                  {company.branches.map((b) => (
+                    <p key={b.id}>
+                      {tr(b, "city")} — {tr(b, "address")}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className={styles.field}>
-              <label htmlFor="contact-phone">Phone Number</label>
-              <input
-                id="contact-phone"
-                name="phone"
-                type="tel"
-                placeholder="+970 59 000 0000"
-                value={form.phone}
-                onChange={handleChange}
+
+            <div className={styles.map}>
+              <iframe
+                src={company.mapEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="map"
               />
             </div>
-            <div className={styles.field}>
-              <label htmlFor="contact-message">Message</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                rows={5}
-                placeholder="Tell us about your project, requirements or any questions..."
-                value={form.message}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit" id="contact-submit" className={styles.submit}>
-              Send Message
-              <SendRoundedIcon fontSize="small" />
-            </button>
-          </form>
-        )}
-      </div>
+          </Reveal>
+        </div>
+      </Container>
     </section>
   );
 }
-
-export default ContactSection;

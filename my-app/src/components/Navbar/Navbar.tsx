@@ -1,258 +1,193 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { useLang } from "@/hooks/useLang";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useCart } from "@/hooks/useCart";
+import Logo from "@/components/Logo";
+import Socials from "@/components/Socials";
+import SafeImage from "@/components/SafeImage";
+import Container from "@/components/Container";
+import Button from "@/components/Button";
+import cx from "@/utility/cx";
+import type { Company, Project } from "@/types";
+import CallRounded from "@mui/icons-material/CallRounded";
+import MailRounded from "@mui/icons-material/MailRounded";
+import LanguageRounded from "@mui/icons-material/LanguageRounded";
+import ShoppingCartRounded from "@mui/icons-material/ShoppingCartRounded";
+import PersonRounded from "@mui/icons-material/PersonRounded";
+import MenuRounded from "@mui/icons-material/MenuRounded";
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import ChatRounded from "@mui/icons-material/ChatRounded";
+import ExpandMoreRounded from "@mui/icons-material/ExpandMoreRounded";
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import styles from "./Navbar.module.scss";
 
-// MUI Icons
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
-import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
+export default function Navbar({
+  company,
+  projects,
+}: {
+  company: Company;
+  projects: Project[];
+}) {
+  const { t, tr, lang, dir, toggle } = useLanguage();
 
-// ─────────────────────────────────────────────
-//  Types
-// ─────────────────────────────────────────────
-interface NavLink {
-  label: string;
-  href: string;
-}
+  const { count, setOpen } = useCart();
 
-const NAV_LINKS_AR: NavLink[] = [
-  { label: "اخر المنتجات", href: "/latest" },
-  { label: "الصفحة الرئيسية", href: "/" },
-  { label: "المنتجات", href: "/products" },
-  { label: "العملاء", href: "/customers" },
-  { label: "من نحن", href: "/about" },
-  { label: "اتصل بنا", href: "/contact" },
-  { label: "الوظائف", href: "/careers" },
-];
+  const [menu, setMenu] = useState(false);
+  const Chevron = dir === "rtl" ? ChevronLeftRounded : ChevronRightRounded;
 
-const NAV_LINKS_EN: NavLink[] = [
-  { label: "Latest Products", href: "/latest" },
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "Clients", href: "/customers" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Careers", href: "/careers" },
-];
-
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("/");
-  const { lang, toggleLang } = useLang();
-  const NAV_LINKS = lang === "ar" ? NAV_LINKS_AR : NAV_LINKS_EN;
-
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 992) setMobileOpen(false);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileOpen]);
-
-  const handleNavClick = (href: string) => {
-    setActiveLink(href);
-    setMobileOpen(false);
-  };
+  // Order: Our Latest Work (mega), Home, Products, Clients, About Us, Contact Us, Careers
+  const links: [string, string][] = [
+    ["/#top", t.nav.home],
+    ["/#catalog", t.nav.products],
+    ["/#clients", t.nav.clients],
+    ["/#about", t.nav.about],
+    ["/#contact", t.nav.contact],
+    ["/#careers", t.nav.careers],
+  ];
+  const megaProjects = projects.slice(0, 3);
 
   return (
-    <header
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
-      role="banner"
-    >
-      {/* ── Main bar ── */}
-      <div className={styles.inner}>
-        {/* ── Brand / Logo ── */}
-        <Link href="/" className={styles.brand} aria-label="Home">
-          <div className={styles.brandDecor} aria-hidden="true" />
-          <div className={styles.brandName}>
-            Ziad Al-Shakhshir
-            <span>Furniture</span>
-          </div>
-        </Link>
-
-        {/* ── Desktop Nav Links ── */}
-        <nav aria-label="Main navigation">
-          <ul className={styles.navLinks} role="list">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`${styles.navLink} ${activeLink === link.href ? styles.active : ""}`}
-                  onClick={() => handleNavClick(link.href)}
-                  aria-current={activeLink === link.href ? "page" : undefined}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* ── Actions / Icons ── */}
-        <div
-          className={styles.actions}
-          role="group"
-          aria-label="Navigation tools"
-        >
-          {/* Language Toggle */}
-          <button
-            id="nav-lang-btn"
-            className={`${styles.iconBtn} ${styles.langBtn}`}
-            onClick={toggleLang}
-            aria-label={
-              lang === "ar" ? "Switch to English" : "التبديل إلى العربية"
-            }
-            title={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}
-          >
-            <TranslateRoundedIcon fontSize="small" />
-            <span className={styles.langLabel}>
-              {lang === "ar" ? "EN" : "AR"}
-            </span>
-          </button>
-
-          <div className={styles.divider} aria-hidden="true" />
-
-          {/* Search */}
-          <button
-            id="nav-search-btn"
-            className={styles.iconBtn}
-            onClick={() => setSearchOpen((prev) => !prev)}
-            aria-label="Search"
-            aria-expanded={searchOpen}
-          >
-            <SearchRoundedIcon fontSize="small" />
-          </button>
-
-          <div className={styles.divider} aria-hidden="true" />
-
-          {/* User */}
-          <Link
-            href="/login"
-            id="nav-user-btn"
-            className={styles.iconBtn}
-            aria-label="My Account"
-          >
-            <PersonRoundedIcon fontSize="small" />
+    <header className={styles.hdr}>
+      <Container>
+        <nav className={styles.nav}>
+          <Link className={styles.brand} href="/">
+            <Logo />
+            <div className={styles.bt}>
+              <b>{t.brand}</b>
+            </div>
           </Link>
 
-          {/* Wishlist */}
-          <button
-            id="nav-wishlist-btn"
-            className={styles.iconBtn}
-            aria-label="Wishlist"
-          >
-            <FavoriteBorderRoundedIcon fontSize="small" />
-            <span className={styles.badge} aria-label="3 items in wishlist">
-              3
-            </span>
-          </button>
-
-          {/* Cart */}
-          <button
-            id="nav-cart-btn"
-            className={styles.iconBtn}
-            aria-label="Shopping Cart"
-          >
-            <ShoppingBagOutlinedIcon fontSize="small" />
-            <span className={styles.badge} aria-label="2 items in cart">
-              2
-            </span>
-          </button>
-
-          {/* Hamburger (mobile only) */}
-          <button
-            id="nav-hamburger-btn"
-            className={`${styles.hamburger} ${mobileOpen ? styles.open : ""}`}
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
-          >
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-
-      {/* ── Inline Search Bar ── */}
-      <div
-        className={`${styles.searchBar} ${searchOpen ? styles.open : ""}`}
-        role="search"
-        aria-hidden={!searchOpen}
-        id="nav-search-bar"
-      >
-        <div className={styles.searchInner}>
-          <SearchRoundedIcon fontSize="small" />
-          <input
-            id="nav-search-input"
-            type="search"
-            className={styles.searchInput}
-            placeholder={
-              lang === "ar"
-                ? "ابحث عن منتج أو فئة أو علامة تجارية..."
-                : "Search for a product, category or brand..."
-            }
-            autoComplete="off"
-            autoFocus={searchOpen}
-          />
-          <button
-            className={styles.searchClose}
-            onClick={() => setSearchOpen(false)}
-            aria-label="Close search"
-          >
-            <CloseRoundedIcon fontSize="small" />
-          </button>
-        </div>
-      </div>
-
-      {/* ── Mobile Drawer Menu ── */}
-      <div
-        id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileOpen ? styles.open : ""}`}
-        role="navigation"
-        aria-label="Mobile main navigation"
-        aria-hidden={!mobileOpen}
-      >
-        <ul className={styles.mobileNavLinks} role="list">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={`${styles.mobileNavLink} ${activeLink === link.href ? styles.active : ""}`}
-                onClick={() => handleNavClick(link.href)}
-                aria-current={activeLink === link.href ? "page" : undefined}
-              >
-                {link.label}
+          <div className={styles.menu}>
+            <div className={styles.hasMega}>
+              <Link className={styles.megaTrigger} href="/#projects">
+                {t.nav.latestWork}
+                <ExpandMoreRounded
+                  className={styles.caret}
+                  sx={{ fontSize: 18 }}
+                />
               </Link>
-            </li>
-          ))}
-        </ul>
+              <div className={styles.mega}>
+                <Container>
+                  <div className={styles.megaHead}>
+                    <h4>{t.sections.projectsTitle}</h4>
+                    <Link className={styles.megaAll} href="/#projects">
+                      {t.actions.viewAll} <Chevron sx={{ fontSize: 18 }} />
+                    </Link>
+                  </div>
+                  <div className={styles.megaGrid}>
+                    {megaProjects.map((p) => (
+                      <Link
+                        className={styles.megaCard}
+                        href="/#projects"
+                        key={p.id}
+                      >
+                        <div className={styles.megaMedia}>
+                          <SafeImage src={p.image} alt={tr(p, "title")} />
+                        </div>
+                        <div className={styles.megaCap}>
+                          <span className={styles.tag}>{tr(p, "sector")}</span>
+                          <h5>{tr(p, "title")}</h5>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </Container>
+              </div>
+            </div>
+
+            {links.map((link) => (
+              <Link key={link[0]} href={link[0]}>
+                {link[1]}
+              </Link>
+            ))}
+          </div>
+
+          <div className={styles.actions}>
+            <button
+              className={styles.langBtn}
+              onClick={toggle}
+              aria-label="language"
+            >
+              <LanguageRounded sx={{ fontSize: 20 }} />
+              {t.langSwitch}
+            </button>
+            <Link
+              className={styles.iconBtn}
+              href="/admin/login"
+              aria-label={t.nav.adminLogin}
+              title={t.nav.adminLogin}
+            >
+              <PersonRounded sx={{ fontSize: 21 }} />
+            </Link>
+            <button
+              className={styles.iconBtn}
+              onClick={() => setOpen(true)}
+              aria-label="cart"
+            >
+              <ShoppingCartRounded sx={{ fontSize: 21 }} />
+              {count > 0 && <span className={styles.cartBadge}>{count}</span>}
+            </button>
+            <button
+              className={cx(styles.iconBtn, styles.hamburger)}
+              onClick={() => setMenu(true)}
+              aria-label="menu"
+            >
+              <MenuRounded sx={{ fontSize: 22 }} />
+            </button>
+          </div>
+        </nav>
+      </Container>
+
+      {/* Mobile menu */}
+      <div
+        className={cx(styles.overlay, menu && styles.open)}
+        onClick={() => setMenu(false)}
+      />
+      <div className={cx(styles.mobileMenu, menu && styles.open)}>
+        <div className={styles.mmHead}>
+          <Link
+            className={styles.mmBrand}
+            href="/"
+            onClick={() => setMenu(false)}
+          >
+            <Logo size={36} />
+            <b style={{ fontFamily: "var(--font-head)" }}>{t.brand}</b>
+          </Link>
+          <button
+            className={styles.iconBtn}
+            onClick={() => setMenu(false)}
+            aria-label="close"
+          >
+            <CloseRounded />
+          </button>
+        </div>
+        <Link href="/#projects" onClick={() => setMenu(false)}>
+          {t.nav.latestWork}
+        </Link>
+        {links.map((link) => (
+          <Link key={link[0]} href={link[0]} onClick={() => setMenu(false)}>
+            {link[1]}
+          </Link>
+        ))}
+        <Link href="/admin/login" onClick={() => setMenu(false)}>
+          <PersonRounded
+            sx={{ fontSize: 20, verticalAlign: "-4px", marginInlineEnd: "8px" }}
+          />
+          {t.nav.adminLogin}
+        </Link>
+        <div className={styles.mmCta}>
+          <Button variant="ghost" onClick={toggle}>
+            <LanguageRounded sx={{ fontSize: 20 }} />
+            {lang === "ar" ? "English" : "العربية"}
+          </Button>
+          <Button variant="primary" href={`https://wa.me/${company.whatsapp}`}>
+            <ChatRounded sx={{ fontSize: 20 }} />
+            {t.contact.whatsapp}
+          </Button>
+        </div>
       </div>
     </header>
   );

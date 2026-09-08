@@ -1,0 +1,58 @@
+@use "../../styles/mixins" as *;
+
+.section {
+  @include section;
+}
+.grid {
+  @include grid-auto(280px);
+  gap: 18px;
+}
+.card {
+  @include card;
+  padding: 26px 24px;
+  transition: 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.35s var(--ease);
+  }
+  &:hover {
+    background: var(--surface-2);
+    transform: translateY(-4px);
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin-bottom: 7px;
+  }
+  p {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+}
+.ico {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent-2);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  svg {
+    font-size: 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}

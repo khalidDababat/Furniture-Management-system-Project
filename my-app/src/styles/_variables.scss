@@ -1,0 +1,13 @@
+// Shared SCSS variables (breakpoints). Color/spacing tokens are CSS custom
+// properties declared globally in app/globals.scss, so they're available to
+// every module via var(--x) without importing.
+
+$bp-lg: 1080px;
+$bp-nav: 980px;
+$bp-tablet: 900px;
+$bp-md: 820px;
+$bp-sm: 760px;
+$bp-xs: 680px;
+$bp-2col: 620px;
+$bp-1col: 520px;
+$bp-mini: 400px;

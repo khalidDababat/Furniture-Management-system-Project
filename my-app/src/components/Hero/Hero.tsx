@@ -1,87 +1,93 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
-import styles from "./hero.module.scss";
-import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { useLanguage } from "@/hooks/useLanguage";
+import SafeImage from "@/components/SafeImage";
+import Container from "@/components/Container";
+import Button from "@/components/Button";
+import cx from "@/utility/cx";
+import type { HeroSlide } from "@/types";
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import ArrowBackRounded from "@mui/icons-material/ArrowBackRounded";
+import styles from "./Hero.module.scss";
 
-import { getHeroSlides } from "@/services/api";
-import { HeroSlide } from "@/types";
-
-interface HeroProps {
-  initialSlides?: HeroSlide[];
-}
-
-function Hero({ initialSlides = [] }: HeroProps) {
-  const [slides, setSlides] = useState<HeroSlide[]>(initialSlides);
-  const [current, setCurrent] = useState(0);
-  const [loaded, setLoaded] = useState(initialSlides.length > 0);
+export default function Hero({ slides }: { slides: HeroSlide[] }) {
+  const { t, tr, dir } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const slideCount = slides.length;
 
   useEffect(() => {
-    if (slides.length > 0) return;
+    if (slideCount <= 1) return;
+    const timeoutId = setTimeout(
+      () => setCurrentIndex((i) => (i + 1) % slideCount),
+      60000,
+    );
+    return () => clearTimeout(timeoutId);
+  }, [currentIndex, slideCount]);
 
-    getHeroSlides()
-      .then((data) => {
-        setSlides(data);
-        setLoaded(true);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoaded(true);
-      });
-  }, [slides.length]);
-
-  const slide = slides[current];
+  const goToSlide = (index: number) =>
+    setCurrentIndex((index + slideCount) % slideCount);
+  const currentSlide = slides[currentIndex];
 
   return (
-    <section className={styles.hero} aria-label="Hero banner">
-      {slides.map((s, i) => (
+    <section className={styles.hero} id="top">
+      {slides.map((sl, i) => (
         <div
-          key={s.id}
-          className={`${styles.slide} ${i === current ? styles.active : ""}`}
-          aria-hidden={i !== current}
+          className={cx(styles.slide, i === currentIndex && styles.active)}
+          key={sl.id}
         >
-          <img
-            src={s.image}
-            alt={s.headline}
-            className={styles.slideImg}
-            sizes="100vw"
+          <SafeImage
+            src={sl.image}
+            alt=""
+            loading={i === 0 ? "eager" : "lazy"}
           />
-          <div className={styles.overlay} />
         </div>
       ))}
 
-      <div className={styles.content} key={current}>
-        {loaded && slide ? (
-          <>
-            <h1 className={styles.headline}>{slide.headline}</h1>
+      <button
+        className={cx(styles.arrow, styles.prev)}
+        onClick={() => goToSlide(currentIndex - 1)}
+        aria-label="previous"
+      >
+        <ChevronLeftRounded />
+      </button>
+      <button
+        className={cx(styles.arrow, styles.next)}
+        onClick={() => goToSlide(currentIndex + 1)}
+        aria-label="next"
+      >
+        <ChevronRightRounded />
+      </button>
 
-            <div className={styles.actions}>
-              <a href="/products" className={styles.cta}>
-                {slide.cta}
-                <ArrowForwardRoundedIcon fontSize="small" />
-              </a>
-            </div>
-          </>
-        ) : (
-          <div className={styles.skeleton} />
-        )}
-      </div>
-
-      {/* pagination */}
-      {slides.length > 1 && (
-        <div className={styles.dots} aria-label="Slide navigation">
-          {slides.map((s, i) => (
-            <button
-              key={s.id}
-              aria-selected={i === current}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
-              onClick={() => setCurrent(i)}
-            />
-          ))}
+      <Container className={styles.inner}>
+        <div className={styles.content} key={currentIndex}>
+          <p>{tr(currentSlide, "subtitle")}</p>
+          <div className={styles.cta}>
+            <Button href="/#catalog">
+              {t.actions.explore}
+              <ArrowBackRounded
+                sx={{
+                  fontSize: 20,
+                  transform: dir === "ltr" ? "rotate(180deg)" : "none",
+                }}
+              />
+            </Button>
+            <Button href="/#contact">{t.actions.customDesign}</Button>
+          </div>
         </div>
-      )}
+      </Container>
+
+      <div className={styles.dots}>
+        {slides.map((sl, i) => (
+          <button
+            key={sl.id}
+            className={cx(i === currentIndex && styles.active)}
+            onClick={() => goToSlide(i)}
+            aria-label={tr(sl, "headline")}
+          />
+        ))}
+      </div>
     </section>
   );
 }
-export default Hero;

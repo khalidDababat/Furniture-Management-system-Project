@@ -1,105 +1,106 @@
 "use client";
 
+import Link from "next/link";
+import { useLanguage } from "@/hooks/useLanguage";
+import Logo from "@/components/Logo";
+import Socials from "@/components/Socials";
+import Container from "@/components/Container";
+import type { Category, Company } from "@/types";
 import styles from "./Footer.module.scss";
 
-// MUI Icons
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+export default function Footer({
+  company,
+  categories,
+}: {
+  company: Company;
+  categories: Category[];
+}) {
+  const { t, tr, lang } = useLanguage();
+  const year = new Date().getFullYear();
+  const links: [string, string][] = [
+    ["/#projects", t.nav.latestWork],
+    ["/#catalog", t.nav.products],
+    ["/#clients", t.nav.clients],
+    ["/#about", t.nav.about],
+    ["/#contact", t.nav.contact],
+    ["/#careers", t.nav.careers],
+  ];
 
-const QUICK_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/" },
-  { label: "Latest Collections", href: "/" },
-  { label: "About Us", href: "/" },
-  { label: "Careers", href: "/" },
-];
-
-function Footer() {
   return (
-    <footer className={styles.footer} role="contentinfo">
-      <div className={styles.inner}>
-        {/* Brand */}
-        <div className={styles.brand}>
-          <div className={styles.brandMark}>
-            <div className={styles.brandDecor} />
-            <div className={styles.brandName}>
-              Ziad Al-Shakhshir
-              <span>Furniture</span>
+    <footer className={styles.footer}>
+      <Container>
+        <div className={styles.grid}>
+          <div>
+            <Link className={styles.brand} href="/">
+              <Logo />
+              <div className={styles.bt}>
+                <b>{t.brand}</b>
+              </div>
+            </Link>
+            <p className={styles.about}>{t.footer.about}</p>
+            <div className={styles.social}>
+              <Socials
+                socials={company.socials}
+                anchorClass={styles.socialBtn}
+              />
             </div>
           </div>
-          <p className={styles.tagline}>
-            نصنع أثاثًا استثنائيًا لمساحات استثنائية منذ عام ١٩٩٩. الدقة والجودة
-            والأناقة في كل قطعة.
-          </p>
-          <div className={styles.socials}>
-            {/* Facebook */}
-            <a href="#" aria-label="Facebook" className={styles.social}>
-              <FacebookRoundedIcon fontSize="small" />
-            </a>
-            {/* Instagram */}
-            <a href="#" aria-label="Instagram" className={styles.social}>
-              <InstagramIcon fontSize="small" />
-            </a>
-            {/* WhatsApp */}
-            <a href="#" aria-label="WhatsApp" className={styles.social}>
-              <WhatsAppIcon fontSize="small" />
-            </a>
-          </div>
-        </div>
 
-        {/* Quick Links */}
-        <div className={styles.col}>
-          <h3 className={styles.colTitle}>Quick Links</h3>
-          <ul className={styles.list}>
-            {QUICK_LINKS.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className={styles.link}>
-                  {l.label}
+          <div className={styles.col}>
+            <h4>{t.footer.quickLinks}</h4>
+            <ul>
+              {links.map((l) => (
+                <li key={l[0]}>
+                  <Link href={l[0]}>{l[1]}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.col}>
+            <h4>{t.footer.ourCategories}</h4>
+            <ul>
+              {categories.slice(0, 6).map((c) => (
+                <li key={c.id}>
+                  <Link href={`/categories/${c.id}`}>{tr(c, "name")}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.col}>
+            <h4>{t.footer.contactUs}</h4>
+            <ul>
+              <li>
+                <a
+                  href={`tel:${company.phones[0].replace(/\s/g, "")}`}
+                  dir="ltr"
+                >
+                  {company.phones[0]}
                 </a>
               </li>
-            ))}
-          </ul>
+              <li>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
+              <li>
+                {tr(company.branches[0], "city")} —{" "}
+                {tr(company.branches[0], "address")}
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Contact Info */}
-        <div className={styles.col}>
-          <h3 className={styles.colTitle}>Contact Us</h3>
-          <address className={styles.contact}>
-            <div className={styles.contactItem}>
-              <PhoneRoundedIcon fontSize="small" />
-              <a href="tel:+97059000000">+970 59 000 0000</a>
-            </div>
-            <div className={styles.contactItem}>
-              <EmailRoundedIcon fontSize="small" />
-              <a href="mailto:info@ziad-furniture.com">
-                info@ziad-furniture.com
-              </a>
-            </div>
-            <div className={styles.contactItem}>
-              <LocationOnRoundedIcon fontSize="small" />
-              <span>Ramallah, Palestine</span>
-            </div>
-          </address>
+        <div className={styles.bottom}>
+          <span>
+            © {year} {t.brand}. {t.footer.rights}.
+          </span>
+          <span className={styles.bottomEnd}>
+            <Link className={styles.adminLink} href="/admin/login">
+              {t.admin.brand}
+            </Link>
+          </span>
         </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className={styles.bottom}>
-        <p>
-          © {new Date().getFullYear()} أثاث زياد الشخشير. جميع الحقوق محفوظة.
-        </p>
-        <div className={styles.bottomLinks}>
-          <a href="/privacy">Privacy Policy</a>
-          <span>·</span>
-          <a href="/terms">Terms of Use</a>
-        </div>
-      </div>
+      </Container>
     </footer>
   );
 }
-
-export default Footer;

@@ -1,0 +1,43 @@
+@use "../../styles/mixins" as *;
+
+.section {
+  @include section;
+  background: var(--bg-2);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 100px;
+  padding: 9px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.24s var(--ease);
+  font-family: var(--font-head), sans-serif;
+  &:hover {
+    color: var(--text);
+    border-color: rgba(147, 102, 57, 0.4);
+  }
+  &.active {
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    color: #F5F3EE;
+    border-color: transparent;
+  }
+}
+.grid {
+  @include grid-auto(258px);
+  gap: 22px;
+}
+.noRes {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}

@@ -1,121 +1,90 @@
-$gold: #c9a84c;
-$gold-light: #e0c97a;
-$dark: #111111;
-$white: #ffffff;
-$transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+@use "../../styles/mixins" as *;
 
 .section {
-  padding: 96px 2rem;
-  background: #fff;
-  max-width: 100%;
-  overflow: hidden;
+  @include section;
 }
-
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.title {
-  margin-bottom: 0.5rem;
-}
-
-// ─────────────────────────────────────────────
-//  Grid
-// ─────────────────────────────────────────────
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 1400px;
-  margin: 0 auto;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.65rem;
-  }
+  @include grid-auto(210px);
+  gap: 18px;
 }
-
-// ─────────────────────────────────────────────
-//  Card
-// ─────────────────────────────────────────────
 .card {
-  display: block;
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 4/3;
-  text-decoration: none;
+  aspect-ratio: 4 / 3.4;
   cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: block;
 
-  &:hover {
-    .img {
-      transform: scale(1.07);
-    }
-
-    .overlay {
-      background: rgba(0, 0, 0, 0.45);
-    }
-
-    .label {
-      padding-bottom: 1.5rem;
-
-      &::before {
-        transform: scaleX(1);
-      }
-    }
+  img {
+    @include cover;
   }
-}
-
-.imageWrapper {
-  position: absolute;
-  inset: 0;
-}
-
-.img {
-  object-fit: cover;
-  object-position: center;
-  transition: transform $transition;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  transition: background $transition;
-}
-
-.label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
-  transition: padding $transition;
-
-  &::before {
+  &::after {
     content: "";
-    display: block;
-    width: 28px;
-    height: 2px;
-    background: $gold;
-    border-radius: 1px;
-    margin-bottom: 0.4rem;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(51, 61, 41, 0.95) 4%,
+      rgba(51, 61, 41, 0.35) 42%,
+      rgba(51, 61, 41, 0.05) 100%
+    );
+    z-index: 1;
+    transition: 0.4s;
   }
-
-  span {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: $white;
-    letter-spacing: 0.04em;
+  &:hover {
+    border-color: rgba(147, 102, 57, 0.5);
+    img {
+      transform: scale(1.09);
+      transition: transform 0.7s var(--ease);
+    }
+    .body p {
+      opacity: 1;
+      max-height: 44px;
+    }
+    .go {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
+.body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 18px;
+  color: white;
+  h3 {
+    font-size: 1.12rem;
+    margin-bottom: 3px;
+  }
+  p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    opacity: 0;
+    max-height: 0;
+    transition: 0.4s var(--ease);
+    overflow: hidden;
+  }
+}
+.go {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(147, 102, 57, 0.92);
+  display: grid;
+  place-items: center;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: 0.35s var(--ease);
+  svg {
+    font-size: 1.15rem;
+    color: #f5f3ee;
   }
 }

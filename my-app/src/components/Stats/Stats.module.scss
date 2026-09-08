@@ -1,0 +1,46 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+.stats {
+  background: linear-gradient(180deg, var(--surface), var(--bg-2));
+  border-block: 1px solid var(--line);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @include bp($bp-2col) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.stat {
+  padding: 34px 18px;
+  text-align: center;
+  position: relative;
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 0;
+    top: 26%;
+    height: 48%;
+    width: 1px;
+    background: var(--line);
+  }
+  @include bp($bp-2col) {
+    &:nth-child(2)::after {
+      display: none;
+    }
+  }
+}
+.num {
+  font-family: var(--font-head), sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.lbl {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}

@@ -1,0 +1,113 @@
+@use "../../styles/mixins" as *;
+
+.card {
+  @include card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s var(--ease);
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(147, 102, 57, 0.4);
+    box-shadow: var(--shadow);
+    .media img {
+      transform: scale(1.06);
+    }
+    .fav {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+.media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #F5F3EE;
+  overflow: hidden;
+  img {
+    @include cover;
+    transition: transform 0.6s var(--ease);
+  }
+}
+.badge {
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  background: var(--accent);
+  color: #F5F3EE;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 100px;
+  font-family: var(--font-head), sans-serif;
+  z-index: 2;
+}
+.fav {
+  position: absolute;
+  top: 10px;
+  inset-inline-end: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(182, 173, 144, 0.72);
+  display: grid;
+  place-items: center;
+  color: #F5F3EE;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: 0.3s;
+}
+.body {
+  padding: 16px 17px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  h3 {
+    font-size: 1.06rem;
+    margin-bottom: 5px;
+    a:hover {
+      color: var(--accent-2);
+    }
+  }
+}
+.cat {
+  color: var(--accent-2);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.desc {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-bottom: 14px;
+  flex: 1;
+}
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+.price {
+  font-family: var(--font-head), sans-serif;
+  font-weight: 800;
+  font-size: 1.28rem;
+  color: var(--text);
+  small {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--muted-2);
+    font-weight: 500;
+  }
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  & > * {
+    flex: 1;
+  }
+}
