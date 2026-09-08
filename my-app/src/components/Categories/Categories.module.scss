@@ -1,0 +1,90 @@
+@use "../../styles/mixins" as *;
+
+.section {
+  @include section;
+}
+.grid {
+  @include grid-auto(210px);
+  gap: 18px;
+}
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3.4;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: block;
+
+  img {
+    @include cover;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(51, 61, 41, 0.95) 4%,
+      rgba(51, 61, 41, 0.35) 42%,
+      rgba(51, 61, 41, 0.05) 100%
+    );
+    z-index: 1;
+    transition: 0.4s;
+  }
+  &:hover {
+    border-color: rgba(147, 102, 57, 0.5);
+    img {
+      transform: scale(1.09);
+      transition: transform 0.7s var(--ease);
+    }
+    .body p {
+      opacity: 1;
+      max-height: 44px;
+    }
+    .go {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
+.body {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 18px;
+  color: white;
+  h3 {
+    font-size: 1.12rem;
+    margin-bottom: 3px;
+  }
+  p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    opacity: 0;
+    max-height: 0;
+    transition: 0.4s var(--ease);
+    overflow: hidden;
+  }
+}
+.go {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(147, 102, 57, 0.92);
+  display: grid;
+  place-items: center;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: 0.35s var(--ease);
+  svg {
+    font-size: 1.15rem;
+    color: #f5f3ee;
+  }
+}

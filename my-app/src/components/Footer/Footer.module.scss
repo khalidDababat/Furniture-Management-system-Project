@@ -1,0 +1,87 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.footer {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  padding-top: 64px;
+  margin-top: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 40px;
+  padding-bottom: 44px;
+  @include bp($bp-tablet) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @include bp($bp-1col) {
+    grid-template-columns: 1fr;
+  }
+}
+.brand {
+  @include brand;
+  margin-bottom: 16px;
+}
+.about {
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 300px;
+  margin-bottom: 18px;
+}
+.social {
+  display: flex;
+  gap: 10px;
+}
+.socialBtn {
+  @include icon-btn;
+  width: 38px;
+  height: 38px;
+}
+.col {
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    font-family: var(--font-head), sans-serif;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    list-style: none;
+  }
+  a,
+  li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  a:hover {
+    color: var(--accent-2);
+  }
+}
+.bottom {
+  border-top: 1px solid var(--line);
+  padding-block: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+}
+.bottomEnd {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.adminLink {
+  color: var(--muted-2);
+  &:hover {
+    color: var(--accent-2);
+  }
+}

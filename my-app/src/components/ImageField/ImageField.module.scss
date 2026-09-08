@@ -1,0 +1,43 @@
+@use "../../styles/mixins" as *;
+
+.wrap {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex: none;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.side {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.url {
+  @include field;
+}
+.err {
+  color: #936639;
+  font-size: 0.82rem;
+}

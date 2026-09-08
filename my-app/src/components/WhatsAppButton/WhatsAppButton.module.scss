@@ -1,0 +1,23 @@
+.waFloat {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-start: 24px;
+  z-index: 70;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: green;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 30px -6px rgba(101, 109, 74, 0.6);
+  cursor: pointer;
+  transition: 0.3s var(--ease);
+  animation: wapulse 2.6s infinite;
+  &:hover {
+    transform: scale(1.09);
+  }
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}

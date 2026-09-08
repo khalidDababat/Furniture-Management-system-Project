@@ -1,0 +1,24 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ziad Shakhshir Factory">
+  <defs>
+    <linearGradient id="zsOrange" x1="18" y1="6" x2="44" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F79A3C"/>
+      <stop offset="0.55" stop-color="#EA7A17"/>
+      <stop offset="1" stop-color="#C85E0A"/>
+    </linearGradient>
+  </defs>
+  <!-- High-back executive chair back (slightly reclined) -->
+  <g transform="rotate(-9 27 34)">
+    <rect x="20" y="5" width="14" height="30" rx="7" fill="url(#zsOrange)"/>
+    <rect x="24.5" y="10" width="5" height="20" rx="2.5" fill="#000000" opacity="0.12"/>
+  </g>
+  <!-- Seat -->
+  <rect x="14" y="32" width="25" height="7.5" rx="3.75" fill="url(#zsOrange)"/>
+  <!-- Gas cylinder -->
+  <rect x="28.4" y="39" width="3.2" height="9" rx="1.4" fill="#2A2A30"/>
+  <!-- Five-star base legs -->
+  <path d="M30 47.5c-1 0-1.9.6-2.3 1.6L23.6 59c-.5 1.1.3 2.3 1.5 2.3.6 0 1.2-.4 1.5-.9L30 53.6l3.4 6.8c.3.5.9.9 1.5.9 1.2 0 2-1.2 1.5-2.3l-4.1-9.9c-.4-1-1.3-1.6-2.3-1.6z" fill="#33333B"/>
+  <!-- Wheels -->
+  <circle cx="24.5" cy="61" r="2.3" fill="url(#zsOrange)"/>
+  <circle cx="35.5" cy="61" r="2.3" fill="url(#zsOrange)"/>
+  <circle cx="30" cy="52" r="2.3" fill="#2A2A30"/>
+</svg>

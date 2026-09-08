@@ -1,0 +1,85 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.section {
+  @include section;
+  background: var(--bg-2);
+}
+.split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 54px;
+  align-items: center;
+  @include bp($bp-md) {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
+.kicker {
+  @include kicker;
+}
+.txt {
+  h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+    margin-bottom: 18px;
+  }
+  p {
+    color: var(--muted);
+    font-size: 1.03rem;
+    margin-bottom: 18px;
+  }
+}
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0 28px;
+  list-style: none;
+  @include bp($bp-md) {
+    grid-template-columns: 1fr;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.95rem;
+  }
+  svg {
+    color: var(--accent-2);
+    font-size: 1.25rem;
+  }
+}
+.media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 4.4;
+  border: 1px solid var(--line);
+  img {
+    @include cover;
+  }
+  @include bp($bp-md) {
+    aspect-ratio: 4 / 3;
+  }
+}
+.badge {
+  position: absolute;
+  inset-inline-start: 22px;
+  bottom: 22px;
+  background: rgba(194, 197, 170, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 20px;
+  b {
+    font-family: var(--font-head), sans-serif;
+    font-size: 2rem;
+    color: var(--accent-2);
+    display: block;
+    line-height: 1;
+  }
+  span {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+}

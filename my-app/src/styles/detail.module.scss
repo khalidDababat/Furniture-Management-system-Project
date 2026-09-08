@@ -1,0 +1,277 @@
+// Shared styles for the detail/inner pages (category, product, job application).
+// Imported by several components so the layout stays DRY.
+@use "mixins" as *;
+@use "variables" as *;
+
+.pad {
+  @include section;
+}
+.mtCta {
+  margin-top: 44px;
+  text-align: center;
+}
+
+/* ---- Sub-hero (page header with breadcrumb) ---- */
+.subhero {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, var(--bg), transparent 70%),
+      radial-gradient(circle at 80% 0, var(--accent-soft), transparent 55%);
+    z-index: 1;
+  }
+  h1 {
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    position: relative;
+    z-index: 2;
+  }
+  p {
+    color: var(--muted);
+    margin-top: 8px;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+  }
+}
+.subheroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.22;
+  img {
+    @include cover;
+  }
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+  a:hover {
+    color: var(--accent-2);
+  }
+  svg {
+    font-size: 1rem;
+  }
+}
+
+/* ---- Product grid + detail ---- */
+.prodGrid {
+  @include grid-auto(258px);
+  gap: 22px;
+}
+.noRes {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}
+.pdSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: start;
+  @include bp($bp-md) {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.pdMedia {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f5f3ee;
+  aspect-ratio: 1 / 1;
+  img {
+    @include cover;
+  }
+}
+.prodCat {
+  color: var(--accent-2);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.pdInfo {
+  h1 {
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    margin: 6px 0 14px;
+  }
+}
+.pdPrice {
+  font-family: var(--font-head), sans-serif;
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: var(--accent-2);
+  margin-bottom: 18px;
+}
+.pdDesc {
+  color: var(--muted);
+  font-size: 1.03rem;
+  margin-bottom: 26px;
+}
+.pdMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  border-block: 1px solid var(--line);
+  padding-block: 20px;
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.94rem;
+    svg {
+      color: var(--accent-2);
+      font-size: 1.2rem;
+    }
+  }
+}
+.pdActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.relatedWrap {
+  margin-top: 70px;
+}
+.relatedHead {
+  font-size: 1.6rem;
+  margin-bottom: 46px;
+}
+
+/* ---- Job chips + application page ---- */
+.jobChips {
+  @include job-chips;
+}
+.jobChip {
+  @include job-chip;
+}
+.applySplit {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 34px;
+  align-items: start;
+  @include bp($bp-md) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+}
+.field {
+  margin-bottom: 16px;
+  label {
+    display: block;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  input,
+  textarea {
+    @include field;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+.aside {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+.posted {
+  color: var(--muted-2);
+  font-size: 0.82rem;
+  margin-top: 14px;
+}
+.fileDrop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1.5px dashed var(--line);
+  border-radius: 12px;
+  background: var(--bg-2);
+  color: var(--muted);
+  cursor: pointer;
+  transition: 0.24s var(--ease);
+  &:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  &.hasFile {
+    border-style: solid;
+    border-color: rgba(147, 102, 57, 0.5);
+    color: var(--text);
+  }
+  svg {
+    color: var(--accent-2);
+    flex: none;
+  }
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.fileHint {
+  display: block;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+  margin-top: 7px;
+}
+.formMsg {
+  margin: 6px 0 14px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &.error {
+    color: #936639;
+  }
+}
+.applySuccess {
+  text-align: center;
+  max-width: 520px;
+  margin-inline: auto;
+  padding: 40px 20px;
+  svg {
+    color: var(--wa);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+}

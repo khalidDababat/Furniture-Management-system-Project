@@ -1,0 +1,220 @@
+@use "mixins" as *;
+
+.page {
+  padding-block: clamp(40px, 6vw, 80px);
+  min-height: 62vh;
+}
+.head {
+  margin-bottom: 28px;
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+  p {
+    color: var(--muted);
+    margin-top: 6px;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 34px;
+  align-items: start;
+  @include bp($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+.formCard,
+.summaryCard {
+  @include card;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.summaryCard {
+  position: sticky;
+  top: 96px;
+  @include bp($bp-md) {
+    position: static;
+  }
+}
+.sumHead {
+  font-family: var(--font-head), sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+.field {
+  margin-bottom: 16px;
+  label {
+    display: block;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  input,
+  textarea {
+    @include field;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+}
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+  @include bp($bp-1col) {
+    grid-template-columns: 1fr;
+  }
+}
+.err {
+  color: #936639;
+  font-size: 0.9rem;
+  margin: 4px 0 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* summary lines */
+.line {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+.lineImg {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #F5F3EE;
+  flex: none;
+}
+.lineMain {
+  flex: 1;
+  min-width: 0;
+  h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+}
+.linePrice {
+  font-family: var(--font-head), sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.totals {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.grand {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-head), sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-top: 4px;
+  span:last-child {
+    color: var(--accent-2);
+  }
+}
+
+/* empty */
+.empty {
+  text-align: center;
+  max-width: 520px;
+  margin-inline: auto;
+  padding: 60px 20px;
+  svg {
+    font-size: 3rem;
+    color: var(--surface-3);
+    display: block;
+    margin: 0 auto 14px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  p {
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+}
+
+/* confirmation */
+.success {
+  text-align: center;
+  max-width: 620px;
+  margin-inline: auto;
+}
+.successIco {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(101, 109, 74, 0.12);
+  color: var(--wa);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  svg {
+    font-size: 3rem;
+  }
+}
+.success h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+  margin-bottom: 10px;
+}
+.success > p {
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+.orderMeta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 22px 0 26px;
+}
+.metaItem {
+  text-align: center;
+  span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+  b {
+    font-family: var(--font-head), sans-serif;
+    font-size: 1.1rem;
+  }
+}
+.confItems {
+  @include card;
+  border-radius: var(--radius-lg);
+  padding: 12px 24px;
+  text-align: start;
+  max-width: 520px;
+  margin: 0 auto 26px;
+}
