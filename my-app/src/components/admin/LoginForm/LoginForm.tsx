@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useLanguage } from "@/hooks/useLanguage";
-import Logo from "@/components/Logo";
-import Button from "@/components/Button";
+import Logo from "@/components/Logo/Logo";
+import Button from "@/components/Button/Button";
 import s from "@/styles/admin.module.scss";
 
 export default function LoginForm() {

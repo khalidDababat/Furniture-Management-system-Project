@@ -1,8 +1,7 @@
-import Reveal from "@/components/Reveal";
+import Reveal from "@/components/Reveal/Reveal";
 import styles from "./SectionHead.module.scss";
 
 export default function SectionHead({
-  kicker,
   title,
   sub,
 }: {

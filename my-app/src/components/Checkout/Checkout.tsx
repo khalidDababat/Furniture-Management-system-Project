@@ -4,10 +4,10 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/hooks/useLanguage";
-import { createOrder } from "@/services/api";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
-import SafeImage from "@/components/SafeImage";
+import { orderService } from "@/services/api";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
+import SafeImage from "@/components/SafeImage/SafeImage";
 import { money, currency } from "@/utility/format";
 import type { Product } from "@/types";
 import ShoppingCartRounded from "@mui/icons-material/ShoppingCartRounded";
@@ -39,7 +39,7 @@ export default function Checkout() {
     setBusy(true);
     setErr(false);
     try {
-      const created = await createOrder({
+      await orderService.createOrder({
         customerName: String(fd.get("customerName") || ""),
         email: String(fd.get("email") || ""),
         phone: String(fd.get("phone") || ""),

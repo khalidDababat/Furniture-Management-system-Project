@@ -1,10 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import type { Job } from "@/types";
 import WorkOutlineRounded from "@mui/icons-material/WorkOutlineRounded";
 import PlaceRounded from "@mui/icons-material/PlaceRounded";

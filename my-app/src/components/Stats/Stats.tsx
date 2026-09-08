@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import Container from "@/components/Container";
+import Container from "@/components/Container/Container";
 import type { Stat } from "@/types";
 import styles from "./Stats.module.scss";
 

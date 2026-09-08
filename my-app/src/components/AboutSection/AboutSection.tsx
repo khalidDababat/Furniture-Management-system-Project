@@ -1,10 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import Reveal from "@/components/Reveal";
-import SafeImage from "@/components/SafeImage";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import Reveal from "@/components/Reveal/Reveal";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import type { Company, WhyItem } from "@/types";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import ArrowBackRounded from "@mui/icons-material/ArrowBackRounded";

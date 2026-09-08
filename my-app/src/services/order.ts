@@ -1,4 +1,4 @@
-import { get, post, put, remove, patch } from "./api";
+import { get, post, remove, patch } from "./api";
 import type { Order } from "@/types";
 
 export const orderService = {

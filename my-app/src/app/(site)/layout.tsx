@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import CartDrawer from "@/components/CartDrawer";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
+import CartDrawer from "@/components/CartDrawer/CartDrawer";
 import {
   companyService,
   categotyService,

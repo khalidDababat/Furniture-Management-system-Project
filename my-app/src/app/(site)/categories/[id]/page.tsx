@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { categotyService, productService } from "@/services/api";
-import CategoryView from "@/components/CategoryView";
+import CategoryView from "@/components/CategoryView/CategoryView";
 
 export const dynamic = "force-dynamic";
 

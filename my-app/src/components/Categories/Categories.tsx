@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/hooks/useLanguage";
-import SafeImage from "@/components/SafeImage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
 import type { Category } from "@/types";
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";

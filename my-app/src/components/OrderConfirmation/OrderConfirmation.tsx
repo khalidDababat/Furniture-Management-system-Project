@@ -1,8 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import { currency } from "@/utility/format";
 import type { Order } from "@/types";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";

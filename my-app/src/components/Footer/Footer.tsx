@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/hooks/useLanguage";
-import Logo from "@/components/Logo";
-import Socials from "@/components/Socials";
-import Container from "@/components/Container";
+import Logo from "@/components/Logo/Logo";
+import Socials from "@/components/Socials/Socials";
+import Container from "@/components/Container/Container";
 import type { Category, Company } from "@/types";
 import styles from "./Footer.module.scss";
 
@@ -15,7 +15,7 @@ export default function Footer({
   company: Company;
   categories: Category[];
 }) {
-  const { t, tr, lang } = useLanguage();
+  const { t, tr } = useLanguage();
   const year = new Date().getFullYear();
   const links: [string, string][] = [
     ["/#projects", t.nav.latestWork],

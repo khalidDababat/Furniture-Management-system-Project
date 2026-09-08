@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { adminService } from "@/services/api";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import cx from "@/utility/cx";
 import type { Job } from "@/types";
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";

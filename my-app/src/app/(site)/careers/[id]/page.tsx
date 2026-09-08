@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { jobService } from "@/services/api";
-import JobApplicationForm from "@/components/JobApplicationForm";
+import JobApplicationForm from "@/components/JobApplicationForm/JobApplicationForm";
 
 export const dynamic = "force-dynamic";
 

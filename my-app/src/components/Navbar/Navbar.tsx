@@ -1,18 +1,15 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useCart } from "@/hooks/useCart";
-import Logo from "@/components/Logo";
-import Socials from "@/components/Socials";
-import SafeImage from "@/components/SafeImage";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import Logo from "@/components/Logo/Logo";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import cx from "@/utility/cx";
 import type { Company, Project } from "@/types";
-import CallRounded from "@mui/icons-material/CallRounded";
-import MailRounded from "@mui/icons-material/MailRounded";
 import LanguageRounded from "@mui/icons-material/LanguageRounded";
 import ShoppingCartRounded from "@mui/icons-material/ShoppingCartRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";

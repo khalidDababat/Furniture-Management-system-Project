@@ -10,7 +10,7 @@ export const productService = {
     return get<Product>(`/products/${id}`);
   },
 
-  getByCategory(categoryId: number | string) {
+  getProductsByCategory(categoryId: number | string) {
     return get<Product[]>(`/products?categoryId=${categoryId}`);
   },
 
@@ -26,13 +26,9 @@ export const productService = {
     return remove(`/products/${id}`);
   },
 
-  getProductsByCategory(categoryId: number | string) {
-    return get<Product[]>(`/products?categoryId=${categoryId}`);
-  },
-
   async getRelatedProducts(categoryId: number, excludeId: number, limit = 4) {
-    const items: any = await productService.getProductsByCategory(categoryId);
-    return items.filter((p: any) => p.id !== excludeId).slice(0, limit);
+    const items = await productService.getProductsByCategory(categoryId);
+    return items.filter((p) => p.id !== excludeId).slice(0, limit);
   },
 
   /* ---------------- Admin: Products CRUD ---------------- */
@@ -41,7 +37,7 @@ export const productService = {
   },
 
   updateProduct(id: number, body: Partial<Product>) {
-    put<Product>(`/products/${id}`, body);
+    return put<Product>(`/products/${id}`, body);
   },
 
   deleteProduct(id: number) {

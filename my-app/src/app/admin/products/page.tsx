@@ -1,5 +1,5 @@
-import AdminShell from "@/components/admin/AdminShell";
-import ProductsAdmin from "@/components/admin/ProductsAdmin";
+import AdminShell from "@/components/admin/AdminShell/AdminShell";
+import ProductsAdmin from "@/components/admin/ProductsAdmin/ProductsAdmin";
 
 export default function AdminProductsPage() {
   return (

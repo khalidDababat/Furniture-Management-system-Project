@@ -1,10 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
 import type { Client } from "@/types";
-import SafeImage from "@/components/SafeImage";
+import SafeImage from "@/components/SafeImage/SafeImage";
 import styles from "./TrustedClients.module.scss";
 
 export default function TrustedClients({ clients }: { clients: Client[] }) {

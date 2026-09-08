@@ -16,8 +16,8 @@ interface LanguageContextValue {
   t: Translation;
   setLang: (l: Lang) => void;
   toggle: () => void;
-  /** Pick the localized field of a bilingual object, e.g. tr(product, "name"). */
-  tr: (obj: any, key: string) => string;
+/** Pick the localized field of a bilingual object, e.g. tr(product, "name"). */
+  tr: (obj: object, key: string) => string;
 }
 
 export const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -52,14 +52,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [],
   );
 
-  const tr = useCallback(
-    (obj: any, key: string): string => {
-      if (!obj) return "";
+const tr = useCallback(
+    (obj: object, key: string): string => {
+      if (obj == null || typeof obj !== "object") return "";
+      const o = obj as Record<string, unknown>;
       const v =
         lang === "ar"
-          ? obj[`${key}_ar`]
-          : (obj[`${key}_en`] ?? obj[`${key}_ar`]);
-      return (v ?? obj[key] ?? "") as string;
+          ? o[`${key}_ar`]
+          : (o[`${key}_en`] ?? o[`${key}_ar`]);
+      return (v ?? o[key] ?? "") as string;
     },
     [lang],
   );

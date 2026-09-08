@@ -1,4 +1,4 @@
-import { get, post, put, remove, patch } from "./api";
+import { get, post, remove, patch } from "./api";
 import type { Admin, JobApplication, Order } from "@/types";
 import { orderService } from "./order";
 

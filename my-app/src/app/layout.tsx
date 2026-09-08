@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Tajawal, Sora, Inter } from "next/font/google";
 import "./globals.scss";
-import Providers from "@/components/Providers";
+import Providers from "@/components/Providers/Providers";
 
 const tajawal = Tajawal({ subsets: ["arabic", "latin"], weight: ["400", "500", "700", "800"], variable: "--font-tajawal", display: "swap" });
 const sora = Sora({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--font-sora", display: "swap" });

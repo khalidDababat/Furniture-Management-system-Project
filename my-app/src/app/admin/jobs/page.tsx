@@ -1,5 +1,5 @@
-import AdminShell from "@/components/admin/AdminShell";
-import JobsAdmin from "@/components/admin/JobsAdmin";
+import AdminShell from "@/components/admin/AdminShell/AdminShell";
+import JobsAdmin from "@/components/admin/JobsAdmin/JobsAdmin";
 
 export default function AdminJobsPage() {
   return (

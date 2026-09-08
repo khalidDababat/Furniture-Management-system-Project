@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/hooks/useLanguage";
-import SafeImage from "@/components/SafeImage";
-import ProductCard from "@/components/ProductCard";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import ProductCard from "@/components/ProductCard/ProductCard";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import type { Category, Product } from "@/types";
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";

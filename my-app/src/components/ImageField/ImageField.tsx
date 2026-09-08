@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 import UploadFileRounded from "@mui/icons-material/UploadFileRounded";
 import DeleteRounded from "@mui/icons-material/DeleteRounded";
 import ImageRounded from "@mui/icons-material/ImageRounded";

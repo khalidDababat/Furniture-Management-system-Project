@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useCart } from "@/hooks/useCart";
-import SafeImage from "@/components/SafeImage";
-import Button from "@/components/Button";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import Button from "@/components/Button/Button";
 import { money } from "@/utility/format";
 import type { Product } from "@/types";
 import ShoppingCartRounded from "@mui/icons-material/ShoppingCartRounded";

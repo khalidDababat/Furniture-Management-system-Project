@@ -2,16 +2,15 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
-import Button from "@/components/Button";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
+import Button from "@/components/Button/Button";
 import type { Company } from "@/types";
 import SendRounded from "@mui/icons-material/SendRounded";
 import CallRounded from "@mui/icons-material/CallRounded";
 import MailRounded from "@mui/icons-material/MailRounded";
 import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
-import ChatRounded from "@mui/icons-material/ChatRounded";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import styles from "./ContactSection.module.scss";
 

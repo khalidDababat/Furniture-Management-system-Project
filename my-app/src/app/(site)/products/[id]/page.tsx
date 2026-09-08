@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { categotyService, productService } from "@/services/api";
-import ProductDetailView from "@/components/ProductDetailView";
+import ProductDetailView from "@/components/ProductDetailView/ProductDetailView";
 
 export const dynamic = "force-dynamic";
 

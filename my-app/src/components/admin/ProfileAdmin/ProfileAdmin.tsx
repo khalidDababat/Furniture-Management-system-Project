@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useLanguage } from "@/hooks/useLanguage";
 import { initials } from "@/utility/format";
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 import PhotoCameraRounded from "@mui/icons-material/PhotoCameraRounded";
 import DeleteRounded from "@mui/icons-material/DeleteRounded";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";

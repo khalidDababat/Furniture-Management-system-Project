@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { orderService } from "@/services/api";
 import type { Order, OrderStatus } from "@/types";
-import Modal from "@/components/Modal";
+import Modal from "@/components/Modal/Modal";
 import cx from "@/utility/cx";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import DeleteRounded from "@mui/icons-material/DeleteRounded";

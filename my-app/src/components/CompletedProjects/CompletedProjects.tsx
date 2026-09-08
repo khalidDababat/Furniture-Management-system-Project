@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import SafeImage from "@/components/SafeImage";
-import Container from "@/components/Container";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import Container from "@/components/Container/Container";
 import type { Project } from "@/types";
 import CloseRounded from "@mui/icons-material/CloseRounded";
 import styles from "./CompletedProjects.module.scss";

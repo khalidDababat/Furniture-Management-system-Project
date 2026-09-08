@@ -2,8 +2,8 @@
 
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/hooks/useLanguage";
-import SafeImage from "@/components/SafeImage";
-import Button from "@/components/Button";
+import SafeImage from "@/components/SafeImage/SafeImage";
+import Button from "@/components/Button/Button";
 import cx from "@/utility/cx";
 import { money, currency } from "@/utility/format";
 import CloseRounded from "@mui/icons-material/CloseRounded";

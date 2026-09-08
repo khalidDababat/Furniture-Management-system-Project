@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
-import ProductCard from "@/components/ProductCard";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import cx from "@/utility/cx";
 import type { Category, Product } from "@/types";
 import styles from "./Catalog.module.scss";

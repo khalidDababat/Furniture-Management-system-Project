@@ -16,7 +16,7 @@ export const categotyService = {
   },
 
   updateCategory(id: number, body: Partial<Category>) {
-    put<Category>(`/categories/${id}`, body);
+    return put<Category>(`/categories/${id}`, body);
   },
 
   deleteCategory(id: number) {

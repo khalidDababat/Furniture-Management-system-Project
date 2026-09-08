@@ -1,22 +1,20 @@
 "use client";
 
 import { useLanguage } from "@/hooks/useLanguage";
-import SectionHead from "@/components/SectionHead";
-import Reveal from "@/components/Reveal";
-import Container from "@/components/Container";
-import Icon from "@/components/Icon";
+import SectionHead from "@/components/SectionHead/SectionHead";
+import Reveal from "@/components/Reveal/Reveal";
+import Container from "@/components/Container/Container";
+import Icon from "@/components/Icon/Icon";
 import type { WhyItem } from "@/types";
 import styles from "./WhyChooseUs.module.scss";
 
 export default function WhyChooseUs({
   items,
-  established,
 }: {
   items: WhyItem[];
   established: number;
 }) {
   const { t, tr } = useLanguage();
-  const year = new Date().getFullYear();
   return (
     <section className={styles.section} id="why">
       <Container>

@@ -1,14 +1,13 @@
 import { getHomeData } from "@/services/api";
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import Categories from "@/components/Categories";
-import Catalog from "@/components/Catalog";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import CompletedProjects from "@/components/CompletedProjects";
-import TrustedClients from "@/components/TrustedClients";
-import AboutSection from "@/components/AboutSection";
-import Careers from "@/components/Careers";
-import ContactSection from "@/components/ContactSection";
+import Hero from "@/components/Hero/Hero";
+import Stats from "@/components/Stats/Stats";
+import Categories from "@/components/Categories/Categories";
+import WhyChooseUs from "@/components/WhyChooseUs/WhyChooseUs";
+import CompletedProjects from "@/components/CompletedProjects/CompletedProjects";
+import TrustedClients from "@/components/TrustedClients/TrustedClients";
+import AboutSection from "@/components/AboutSection/AboutSection";
+import Careers from "@/components/Careers/Careers";
+import ContactSection from "@/components/ContactSection/ContactSection";
 
 export const dynamic = "force-dynamic";
 

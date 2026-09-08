@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { orderService } from "@/services/api";
-import OrderConfirmation from "@/components/OrderConfirmation";
+import OrderConfirmation from "@/components/OrderConfirmation/OrderConfirmation";
 
 export const dynamic = "force-dynamic";
 
