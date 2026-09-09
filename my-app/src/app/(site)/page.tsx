@@ -1,4 +1,5 @@
 import { getHomeData } from "@/services/api";
+
 import Hero from "@/components/Hero/Hero";
 import Stats from "@/components/Stats/Stats";
 import Categories from "@/components/Categories/Categories";
@@ -26,7 +27,7 @@ export default async function Home() {
         points={d.whyChooseUs.slice(0, 4)}
         image={d.heroSlides[1].image}
       />
-      <Careers jobs={d.jobs} />
+      <Careers />
       <ContactSection company={d.company} />
     </>
   );

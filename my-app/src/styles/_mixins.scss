@@ -59,13 +59,14 @@
 /* form input / textarea */
 @mixin field {
   width: 100%;
-  background: var(--bg-2);
+  background: #cfcaaf;
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 13px 15px;
   color: var(--text);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.99rem;
+  font-weight: 800;
   transition: 0.2s;
   &:focus {
     outline: none;
@@ -118,7 +119,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: white;
+  color: black;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.14em;

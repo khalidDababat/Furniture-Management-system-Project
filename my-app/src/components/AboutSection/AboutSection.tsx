@@ -31,7 +31,7 @@ export default function AboutSection({
           <ul className={styles.points}>
             {points.map((p) => (
               <li key={p.id}>
-                <CheckCircleRounded sx={{ fontSize: 20 }} />
+                <CheckCircleRounded />
                 {tr(p, "title")}
               </li>
             ))}

@@ -73,3 +73,35 @@
     color: var(--muted);
   }
 }
+
+/* ── Bilingual info banner ──────────────────────────────── */
+.infoBar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+.infoText {
+  width: 100%;
+  padding: 5px 32px;
+  font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text);
+
+  /* align with the text direction */
+  &[dir="ltr"] { text-align: left; }
+  &[dir="rtl"] { text-align: right; }
+}
+
+@media (max-width: 640px) {
+  .infoText {
+    text-align: center !important;
+  }
+}
+

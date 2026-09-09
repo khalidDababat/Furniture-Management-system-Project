@@ -83,14 +83,11 @@
       "about": "شركة فلسطينية رائدة في تصنيع الأثاث المكتبي والمعدني الفاخر منذ عام 1987."
     },
     "careers": {
-      "title": "انضم إلى فريقنا",
+      "title": "طلبات وظائف",
       "text": "نبحث دائماً عن مواهب شغوفة بالحِرفية والتصميم والتصنيع. استكشف الوظائف الشاغرة وقدّم طلبك.",
-      "noVacancies": "لا توجد وظائف شاغرة حالياً",
-      "noVacanciesHint": "تابعنا لاحقاً — يتم تحديث الوظائف الشاغرة باستمرار.",
-      "viewApply": "التقديم على الوظيفة",
-      "backToJobs": "العودة إلى الوظائف",
-      "applyTitle": "التقديم على الوظيفة",
-      "posted": "نُشرت بتاريخ",
+      "textInfo": "انضم إلى فريقنا وأرسل سيرتك الذاتية إلى هذا البريد الإلكتروني: ",
+      "textreply": "سنتواصل معك في الوقت المناسب.",
+
       "form": {
         "fullName": "الاسم الكامل",
         "mobile": "رقم الجوال",
@@ -422,14 +419,11 @@
       "about": "A leading Palestinian manufacturer of premium office and metal furniture since 1987."
     },
     "careers": {
-      "title": "Join Our Team",
+      "title": "Job Applications",
       "text": "We're always looking for talent passionate about craftsmanship, design and manufacturing. Explore our open roles and apply.",
-      "noVacancies": "No vacancies currently",
-      "noVacanciesHint": "Check back soon — open roles are updated regularly.",
-      "viewApply": "View & Apply",
-      "backToJobs": "Back to careers",
-      "applyTitle": "Apply for this role",
-      "posted": "Posted",
+      "textInfo": "Join our team and send your CV to this email please: ",
+      "textreply": "We will contact you when the time is right.",
+
       "form": {
         "fullName": "Full Name",
         "mobile": "Mobile Number",
