@@ -36,7 +36,7 @@
     background: linear-gradient(
       0deg,
       rgba(51, 61, 41, 0.94),
-      rgba(51, 61, 41, 0.15) 55%,
+      rgba(51, 61, 41, 0.15) 50%,
       transparent
     );
     transition: 0.4s;
@@ -59,9 +59,10 @@
   h3 {
     font-size: 1.3rem;
     margin-bottom: 5px;
+    color: wheat;
   }
   p {
-    color: #B6AD90;
+    color: #bbaaa8;
     font-size: 0.9rem;
     opacity: 0;
     max-height: 0;
@@ -72,7 +73,7 @@
 .tag {
   display: inline-block;
   background: var(--accent);
-  color: #F5F3EE;
+  color: #f5f3ee;
   font-size: 0.72rem;
   font-weight: 700;
   padding: 4px 12px;

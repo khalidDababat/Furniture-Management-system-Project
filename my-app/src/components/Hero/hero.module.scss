@@ -29,16 +29,16 @@
   }
 }
 
-:global(html[dir="ltr"]) .slide::after {
-  background:
-    linear-gradient(
-      -90deg,
-      rgba(51, 61, 41, 0.92) 0%,
-      rgba(51, 61, 41, 0.72) 42%,
-      rgba(51, 61, 41, 0.3) 100%
-    ),
-    linear-gradient(0deg, rgba(51, 61, 41, 0.85), transparent 55%);
-}
+// :global(html[dir="ltr"]) .slide::after {
+//   background:
+//     linear-gradient(
+//       -90deg,
+//       rgba(51, 61, 41, 0.92) 0%,
+//       rgba(51, 61, 41, 0.72) 42%,
+//       rgba(51, 61, 41, 0.3) 100%
+//     ),
+//     linear-gradient(0deg, rgba(51, 61, 41, 0.85), transparent 55%);
+// }
 .inner {
   position: relative;
   z-index: 5;

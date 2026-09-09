@@ -64,7 +64,7 @@ export default function Hero({ slides }: { slides: HeroSlide[] }) {
         <div className={styles.content} key={currentIndex}>
           <p>{tr(currentSlide, "subtitle")}</p>
           <div className={styles.cta}>
-            <Button href="/#catalog">
+            <Button href="/#categories">
               {t.actions.explore}
               <ArrowBackRounded
                 sx={{
@@ -78,7 +78,7 @@ export default function Hero({ slides }: { slides: HeroSlide[] }) {
         </div>
       </Container>
 
-      <div className={styles.dots}>
+      {/* <div className={styles.dots}>
         {slides.map((sl, i) => (
           <button
             key={sl.id}
@@ -87,7 +87,7 @@ export default function Hero({ slides }: { slides: HeroSlide[] }) {
             aria-label={tr(sl, "headline")}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }

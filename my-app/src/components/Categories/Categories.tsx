@@ -37,7 +37,6 @@ export default function Categories({ categories }: { categories: Category[] }) {
               </div>
               <div className={styles.body}>
                 <h3>{tr(c, "name")}</h3>
-                {/* <p>{tr(c, "desc")}</p> */}
               </div>
             </Reveal>
           ))}
